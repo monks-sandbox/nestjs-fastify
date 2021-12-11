@@ -1,3 +1,8 @@
+# NestJS fastify
+
+- [nestJS Docs](https://docs.nestjs.com/)
+- [Using fastify with nestJS](https://docs.nestjs.com/techniques/performance)
+
 ## Installation
 
 ```bash
