@@ -1,6 +1,7 @@
+import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { ThrottlerModule } from '@nestjs/throttler';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { HelloModule } from './hello/hello.module';
 
 @Module({
@@ -10,8 +11,13 @@ import { HelloModule } from './hello/hello.module';
       ttl: 60,
       limit: 10,
     }),
-
     HelloModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
   ],
 })
 export class AppModule {}
